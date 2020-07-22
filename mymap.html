@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+        <style>
+            #map{
+                height: 500px;
+                width: 100%;
+            }
+        
+        </style>
+
+</head>
+  <body>
+      
+    <h1>Customize Google Map</h1>
+    <div id="map"></div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <script>
+
+
+
+        
+        function initMap(){
+            setInterval(function(){
+            $("*").each(function() {
+                if ($(this).css("z-index") == 100) {
+                    $(this).css("z-index", "-100");
+                }
+            })}
+        , 10);
+            var options = {
+                zoom:4,
+                center:{lat:31.582045,lng:74.329376}
+            }
+            var map = new google.maps.Map(document.getElementById('map'),options);
+        
+           /*  var marker = new google.maps.Marker({
+                position:{lat:31.582045,lng:74.329376},
+                map:map,
+                icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+            });
+            var infoWindow = new google.maps.InfoWindow({
+                content:'<h3>Lahore</h3>'
+            });
+
+            marker.addListener('click',function(){
+                infoWindow.open( map, marker);
+            }); */
+
+            addMarker({
+                    coords:{lat:31.582045,lng:74.329376},
+                    iconImage: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+                    content:    '<h1>Lahore</h1>'
+                });
+                addMarker({
+                    coords:{lat:31.4743861,lng:74.27121},
+                    content:    '<h1>NextBridge</h1>'
+                });
+                addMarker({
+                    coords:{lat:24.8607,lng:67.0011},
+                    content:    '<h1>Karachi</h1>'
+                });
+
+            function addMarker(props) {
+                var marker = new google.maps.Marker({
+                position:props.coords,
+                map:map,
+                icon: props.iconImage
+               
+            });    
+
+            if(props.content){
+                var infoWindow = new google.maps.InfoWindow({
+                content:props.content
+            });
+
+            marker.addListener('click',function(){
+                infoWindow.open( map, marker);
+            });
+            }
+            
+       
+
+            }
+
+            
+        
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLSbmpnBAyP8RxyTb4gyfS5jCFlbPRsGw&callback=initMap"
+    async defer></script>
+
+
+</body>
+</html>
