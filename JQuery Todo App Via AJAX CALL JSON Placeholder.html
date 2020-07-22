@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+       <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="main.js"></script>  
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+    <style>
+        .header{
+            width: 100%;
+               height: 100px;
+               background-color: #03acc7;
+               color: white;
+               text-align: center;
+            
+               padding-top: 28px;
+               font-weight: 900;
+               font-size: 30px;
+               margin-bottom: 20px;
+        }
+        #todos li{
+            background-color: aliceblue;
+            margin-bottom: 58px;
+            text-decoration: none;
+            
+        }
+        #add-todo{
+            float: right;
+    background-color: #36acc7;
+    color: white;
+    width: 30%;
+    border: #36acc7;
+        }
+        ul li .edit {
+            display: none;
+        }
+        ul li.edit .edit{
+            display: initial;
+        }
+        ul li.edit .noedit{
+            display: none;
+        }
+        ul li.edit .editno{
+            display: none;
+        }
+       button.edit{
+           display: inline;
+       }
+       .edit-button{
+        float: right;
+    width: 15%;
+    background-color: #36acc7;
+    border: none;
+    color: white;
+    margin: 0px 0px 0px 10px;
+       }
+       .saveedit{
+        float: right;
+    width: 15%;
+    background-color: #36acc7;
+    border: none;
+    color: white;
+    margin: 0px 0px 0px 10px;
+       }
+       .canceledit{
+        float: right;
+    width: 15%;
+    background-color: #36acc7;
+    border: none;
+    color: white;
+    margin: 0px 0px 0px 10px;
+       }
+       .remove{
+        float: right;
+    width: 15%;
+    background-color: #36acc7;
+    border: none;
+    color: white;
+       }
+    </style>
+
+</head>
+  <body>
+      <div class="header">
+           Todo app
+      </div>
+      <div class="container">
+            <div class="row">
+                <div class="col-md-4 todo-panel">
+                    <h2>New Todo Task</h2>
+                    <input type="hidden" id="todo-id1" style="margin-left: 40px; width: 62%" ></p>
+                 <p>Todo userId:   <input type="number" id="todo-id" style="margin-left: 40px; width: 62%" ></p>
+                 <p>Todo title:   <input type="text" id="todo-title" style="margin-left: 58px; width: 62%"></p>
+                 <p>Todo Status:   <input type="text" id="todo-status" style="margin-left: 39px; width: 62%"></p>
+                 <button id="add-todo"> Submit </button>
+                 <button id="" class="save-edit" style="display: none;" > Update </button>
+                </div>
+                <div class="col-md-8">
+                        <h2>Todos</h2>
+                        <ul id="todos"></ul>
+                </div>
+            </div>
+           
+      </div>
+     
+ 
+    <script>
+       
+            $(function(){
+            var $todos = $('#todos');
+            var $todo_id = $('#todo-id');
+            var $todo_title = $('#todo-title');
+            var $todo_status = $('#todo-status');
+           
+            function addTodo(todo) {
+             
+                 $todos.append('<li id="' + todo.id + '"><p><strong> Todo Id: </strong> ' +'<span class="noedit id">' + todo.id + '</span>' + '<input type="number" class="edit id" style="margin-left:51px" >' + '</p>' + '<p><strong> Todo UserId: </strong>' + '<span class="noedit userId">' + todo.userId + '</span>' + '<input type="number" class="edit userId" style="margin-left:15px" >' + '</p>' +  '<p><strong> Todo Title: </strong>' +'<span class="noedit title" >'+ todo.title + '</span>' + '<input type="text" class="edit title" style="margin-left:33px" >' + '</p>' + '<p><strong> Todo Status: </strong>' + '<span class="noedit completed ">' + todo.completed + '</span>' + '<input type="text" class="edit completed" style="margin-left:18px" >' + '</p>' + 
+                    '<button class="edit-button">Edit</button>' 
+                    + '<button class="edit saveedit">Save</button>'
+                     + '<button class="edit canceledit">Cancel</button>' + 
+                     '<button id="' + todo.id + '" class="remove">Remove</button>' +
+                   
+                      '</li>'); 
+                
+            }
+            $.ajax({
+                 type: 'GET',
+                 url: 'https://jsonplaceholder.typicode.com/todos',
+                 success: function(todos) {
+                     $.each(todos,function(i,todo){
+                         addTodo(todo);
+                 }); 
+             },
+             error: function(){
+                alert('error found');
+             }
+             });
+
+             $todos.delegate('.canceledit','click',function(){
+                    $(this).closest('li').removeClass('edit');
+                    $('.edit-button').show();
+                });
+
+             $todos.delegate('.edit-button','click',function(){
+                    console.log('hellow');
+                   
+                    var $li = $(this).closest('li');
+                    
+                    $('.todo-panel').find('input#todo-id1').val($li.find('span.id').html());
+                    $('.todo-panel').find('input#todo-id').val($li.find('span.userId').html());
+                    $('.todo-panel').find('input#todo-title').val($li.find('span.title').html());
+                    $('.todo-panel').find('input#todo-status').val($li.find('span.completed').html());
+                   /*  $(this).closest('li').addClass('edit'); */
+                    $('.edit-button').hide();
+                    $('#add-todo').css('display','none');
+                    $('.save-edit').css('display','initial')
+
+
+                    /* $li.find('input.id').val($li.find('span.id').html());
+                    $li.find('input.userId').val($li.find('span.userId').html());
+                    $li.find('input.title').val($li.find('span.title').html());
+                    $li.find('input.completed').val($li.find('span.completed').html());
+                    $(this).closest('li').addClass('edit');
+                    $('.edit-button').hide(); */
+                });
+
+                $('.save-edit').on('click',function(){
+                    var $li = $(this).closest('li');
+                  
+
+                    
+                    var todo1 = {
+                        id: $('.todo-panel').find('input#todo-id1').val(),
+                        userId: $('.todo-panel').find('input#todo-id').val(),
+                        title: $('.todo-panel').find('input#todo-title').val(),
+                        completed: $('.todo-panel').find('input#todo-status').val(),
+                    };   
+                    $.ajax({
+                            type: 'POST',
+                            url: 'https://jsonplaceholder.typicode.com/todos',
+                            data: todo1,
+                            success: function(newtodos){
+                                $li.find('span.id').html(todo1.id);
+                                $li.find('span.userId').html(todo1.userId);
+                                $li.find('span.title').html(todo1.title);
+                                $li.find('span.completed').html(todo1.completed);
+                                $li.removeClass('edit');
+                                $('.edit-button').show();
+                                
+                                alert('Record is Updated');
+                           /*  addTodo(newtodos); */
+                            },
+                            error: function(){
+                            alert('error on saving');
+                            }
+                    });
+                });
+
+
+
+
+                $todos.delegate('.remove','click',function(){
+                    var id = $(this).attr('id');
+                    $(this).parent().fadeOut(300,function(){
+                        $(this).closest().remove();
+                        
+                    });
+                  
+                   
+                    $.ajax({
+                        type: 'DELETE',
+                        url: 'https://jsonplaceholder.typicode.com/todos/'+id,
+                    });
+                 });
+
+                $('#add-todo').on('click',function(){
+
+                    if($todo_id.val() == ''){
+                        alert('user id is required');
+                        return false;
+                    }
+                    if($todo_title.val() == ''){
+                        alert('Todo Title is required');
+                        return false;
+                    }
+                    if($todo_status.val() == ''){
+                        alert('Todo Status is required');
+                        return false;
+                    }
+                    var todo = {
+                        userId: $todo_id.val(),
+                        title: $todo_title.val(),
+                        completed: $todo_status.val(),
+                    };
+                    $.ajax({
+                            type: 'POST',
+                            url: 'https://jsonplaceholder.typicode.com/todos',
+                            data: todo,
+                            success: function(newtodos){
+                             addTodo(newtodos);
+                             $todo_id.val('');
+                             $todo_title.val('');
+                             $todo_status.val('');
+                            },
+                            error: function(){
+                            alert('error on saving');
+                            }
+                    });
+
+                });
+     
+             });
+           
+             
+
+                
+               
+            
+         
+         </script>
+</body>
+</html>
