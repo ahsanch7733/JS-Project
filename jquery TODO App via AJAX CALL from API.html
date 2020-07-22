@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+     <script>
+        $(document).ready(function(){
+                    var result = '';
+                    var usererr = true;
+                    var userlasterr =true;
+                    var userpasserr = true;
+                    var userconfpasserr = true;
+                    var userddlCity = true;
+                    var usercolorcheckerr = true;
+                    var usercontactcheckerr = true;
+                    var var_validate = true;
+
+                    $('#usercheck').hide();
+                    $('#userlastcheck').hide();
+                    $('#userpasscheck').hide();
+                    $('#userconfpasscheck').hide();
+                    $('#usercitycheck').hide();
+                    $('#usercolorcheck').hide();
+                    $('#usercontactcheck').hide();
+
+                   
+                  /*   $('#txtFirstName').keyup(function(){
+                        firstnamecheck();
+                    });
+                    $('#txtLastName').keyup(function(){
+                        lastnamecheck();
+                    });
+                    $('#txtpass').keyup(function(){
+                        passcheck();
+                    });
+                    $('#txtconfpass').keyup(function(){
+                        confpass();
+                    });
+                    $(#ddlCity).keyup(function(){
+                        citycheck();
+
+                    });  */
+                    
+
+
+            function firstnamecheck(){
+                      var first_name = $('#txtFirstName').val();
+                     
+                      if(first_name.length == '')
+                      {
+                          
+                          $('#usercheck').show();
+                          $('#usercheck').html("*Fill the First Name field");
+                          $('#usercheck').focus();
+                          $('#usercheck').css('color','red');
+                          usererr = false;
+                          var_validate = false;
+                          return false;
+                      }
+                      else{
+                          $('#usercheck').hide();
+                      }
+                      if((first_name.length < 3) || (first_name.length > 15))
+                      {
+                          
+                          $('#usercheck').show();
+                          $('#usercheck').html("*User name must between in 3 characters and 15 characters");
+                          $('#usercheck').focus();
+                          $('#usercheck').css('color','red');
+                          usererr = false;
+                          var_validate = false;
+                          return false;
+                      }
+                      else{
+                          $('#usercheck').hide();
+                      }
+            }
+
+            function lastnamecheck(){
+                      var last_name = $('#txtLastName').val();
+                      if(last_name.length == '')
+                      {
+                          
+                          $('#userlastcheck').show();
+                          $('#userlastcheck').html("*Fill the Last Name field");
+                          $('#userlastcheck').focus();
+                          $('#userlastcheck').css('color','red');
+                          userlasterr = false;
+                          var_validate = false;
+                          return false;
+                      }
+                      else{
+                          $('#userlastcheck').hide();
+                      }
+                      if((last_name.length < 3) || (last_name.length > 15))
+                      {
+                          
+                          $('#userlastcheck').show();
+                          $('#userlastcheck').html("*Last name must between in 3 characters and 15 characters");
+                          $('#userlastcheck').focus();
+                          $('#userlastcheck').css('color','red');
+                          userlasterr = false;
+                          var_validate = false;
+                          return false;
+                      }
+                      else{
+                          $('#userlastcheck').hide();
+                      }
+             }
+             function passcheck(){
+                 var password = $('#txtpass').val();
+                 if( password.length == '')
+                 {
+                          
+                          $('#userpasscheck').show();
+                          $('#userpasscheck').html("*Fill the Password field");
+                          $('#userpasscheck').focus();
+                          $('#userpasscheck').css('color','red');
+                          userpasserr = false;
+                          var_validate = false;
+                          return false;
+                      }
+                      else{
+                          $('#userpasscheck').hide();
+                      }
+                      if ((password.length < 3) || (password.length > 15))
+                      {
+                          
+                          $('#userpasscheck').show();
+                          $('#userpasscheck').html("*Length of password must between 3 to 15 characters");
+                          $('#userpasscheck').focus();
+                          $('#userpasscheck').css('color','red');
+                          userpasserr = false;
+                          var_validate = false;
+                          return false;
+                      }
+                      else{
+                          $('#userpasscheck').hide();
+                      }
+             }
+
+            function confpass(){
+                        var confirmed_pass = $('#txtconfpass').val();
+                        var password = $('#txtpass').val();
+                        if( confirmed_pass != password  )
+                        {
+                          
+                          $('#userconfpasscheck').show();
+                          $('#userconfpasscheck').html("*Password is not match with New password");
+                          $('#userconfpasscheck').focus();
+                          $('#userconfpasscheck').css('color','red');
+                          userconfpasserr = false;
+                          var_validate = false;
+                          return false;
+                      }
+                      else{
+                          $('#userconfpasscheck').hide();
+                      }
+
+                        
+            }
+            function citycheck(){
+                var city_sel = $('#ddlCity').val();
+                console.log(city_sel);
+                        if( city_sel == 'none') {
+                          $('#usercitycheck').show();
+                          $('#usercitycheck').html("*Please Select an option first");
+                          $('#usercitycheck').focus();
+                          $('#usercitycheck').css('color','red');
+                          userddlCity = false;
+                          var_validate = false;
+                          return false;
+                      }
+                      else{
+                          $('#usercitycheck').hide();
+                      }
+            }
+            function colorcheck(){
+                var color_var = $('#radioDiv').val();
+                console.log(color_var);
+                if(color_var == '')
+                {
+                          $('#usercolorcheck').show();
+                          $('#usercolorcheck').html("*Please Select Color first");
+                          $('#usercolorcheck').focus();
+                          $('#usercolorcheck').css('color','red');
+                          usercolorcheckerr = false;
+                          var_validate = false;
+                          return false;
+                      }
+                      else{
+                          $('#usercolorcheck').hide();
+                      }
+
+            }
+            function contactcheck(){
+                var contact_method = $('#checkboxid')
+                contact_var = $(contact_method).find("input[type='checkbox']:checked").val();
+                console.log(contact_var);
+
+                if( typeof contact_var == 'undefined')
+                {
+                    $('#usercontactcheck').show();
+                    $('#usercontactcheck').html("*Please Select at least one Contact method");
+                    $('#usercontactcheck').focus();
+                    $('#usercontactcheck').css('color','red');
+                    usercontactcheckerr = false;
+                    var_validate = false;
+                    return false;
+                }
+                else{
+                    $('#usercontactcheck').hide();
+                }
+            }
+                $(":input").change(function(){
+                        
+                        if(result == '')
+                        {
+                            result += $(this).val();
+                        }
+                        else{
+                            result += '<br/>' +$(this).val();
+                        }
+                        $('#btnSubmit').click(function(){
+                            firstnamecheck();
+                  
+                            lastnamecheck();
+             
+                            passcheck();
+             
+                            confpass();
+
+                            citycheck();
+
+                             
+
+                            contactcheck();  
+
+                        
+
+                            if( (usererr == false) || (userlasterr == false) || (userpasserr == false) || (userconfpasserr == false) ||  (userddlCity == false)  )
+                            {         
+                                
+                            }
+                            else 
+                            {
+                                $('#divResult').html(' <h1>Contact form data</h1> ' + result);
+                            }
+                          
+                     
+                   
+                        });
+                       
+                });
+
+               
+        });
+        
+        </script>
+        <style>
+           
+           .header {
+               width: 100%;
+               height: 100px;
+               background-color: #03acc7;
+               color: white;
+               text-align: center;
+            
+               padding-top: 28px;
+               font-weight: 900;
+               font-size: 30px;
+                }
+                input{
+                
+                  
+                    margin-bottom: 20px;
+                }
+                #radioDiv{
+                    width: 5%;
+                  
+                }
+                #chkBox1,#chkBox2,#chkBox3{
+                    width: 5%;
+                  
+                }
+                textarea{
+                   width: 100%;
+                }
+                h5{
+                    font-size: 12px;
+                }
+                @media (min-width: 320px) and (max-width: 768px) {
+  
+                        .container{
+                            padding-left: 15px !important;
+
+                        }
+  
+                    }
+        
+        </style>
+
+
+</head>
+  <body style="background-color: aliceblue;">
+      <div class="header">
+          Contact Form
+      </div>
+      <div class="container" style=" padding-top: 60px;
+      padding-left: 180px;     background-color: aliceblue;">
+
+      
+    <table style="width: 75%;">
+        <tr>
+            <td style="font-size: 20px;">First Name : <h5 id="usercheck"> </h5></td>
+            
+        </tr>
+        <tr>
+                <td>
+                        <input id="txtFirstName" type="text" class="inputRequired"   style="    width: 100%;
+                        border: none;
+                        box-shadow: -3px 4px 5px 3px #e8e0e0;
+                        border-radius: 5px;
+                        padding: 5px 0px;     padding-left: 5px;" />
+                        
+                    </td>
+        </tr>
+        <tr>
+            <td style="font-size: 20px;">Last Name :  <h5 id="userlastcheck"> </h5></td>
+            
+        </tr>
+        <tr>
+                <td>
+                        <input id="txtLastName" type="text" class="inputRequired"  style="    width: 100%;
+                        border: none;
+                        box-shadow: -3px 4px 5px 3px #e8e0e0;
+                        border-radius: 5px;
+                        padding: 5px 0px;     padding-left: 5px;" />
+                       
+                    </td>
+        </tr>
+        <tr>
+                <td style="font-size: 20px;">Password :  <h5 id="userpasscheck"> </h5></td>
+               
+        </tr>
+        <tr>
+                <td>
+                        <input id="txtpass" type="password" class="inputRequired"  style="    width: 100%;
+                        border: none;
+                        box-shadow: -3px 4px 5px 3px #e8e0e0;
+                        border-radius: 5px;
+                        padding: 5px 0px;     padding-left: 5px;" />
+                       
+                    </td>
+        </tr>
+        <tr>
+                    <td style="font-size: 20px;">Confirm password :    <h5 id="userconfpasscheck"> </h5></td>
+                    
+                
+        </tr>
+        <tr>
+                <td >
+                        <input id="txtconfpass" type="password" class="inputRequired"  style="    width: 100%;
+                        border: none;
+                        box-shadow: -3px 4px 5px 3px #e8e0e0;
+                        border-radius: 5px;
+                        padding: 5px 0px;     padding-left: 5px;" />
+                     
+                    </td>
+        </tr>
+        <tr>
+            <td style="font-size: 20px;">City :  <h5 id="usercitycheck"> </h5></td>
+           
+        </tr>
+        <tr>
+                <td>
+                        <select id="ddlCity" class="inputRequired" style="      margin-bottom: 15px;
+                        background-color: white;
+                        padding: 10px 30px;
+                        /* border: 1px; */
+                        border-radius: 6px;
+                        border: none;">
+                            <option value="none" >Pick one..</option>
+                            <option value="New York">New York</option>
+                            <option value="London">London</option>
+                            <option value="Chennai">Chennai</option>
+                            <option value="Sydney">Sydney</option>
+                        </select>
+                       
+                    </td>
+        </tr>
+        <!-- <tr>
+            <td style="font-size: 20px;">Favourite Color :</td>
+        
+        
+        </tr>
+        <tr>
+                <td>
+               
+                        <input id="radioDiv" name="color" type="radio" value="Red"
+                                class="inputRequired"  />Red
+                        <input id="radioDiv" name="color" type="radio" value="Green"
+                                class="inputRequired" />Green
+                        <input id="radioDiv" name="color" type="radio" value="Blue"
+                                class="inputRequired" />Blue
+                        <h5 id="usercolorcheck"> </h5>
+                </td>
+        </tr> -->
+        <tr>
+            <td style="font-size: 20px;">Contact Method :</td>
+            
+           
+        </tr>
+        <tr>
+                <td id="checkboxid">
+                    <input id="chkBox1" type="checkbox" value="Email" class="inputRequired" />Email
+                    <input id="chkBox2" type="checkbox" value="Phone" class="inputRequired" />Phone
+                    <input id="chkBox3" type="checkbox" value="Social Media" class="inputRequired" />Social Media
+                    <h5 id="usercontactcheck"> </h5>
+                </td>
+        </tr>
+     
+        <tr>
+            <td style="font-size: 20px;">
+                Comments
+            </td>
+           
+            
+        </tr>
+        <tr>
+                <td>
+                        <textarea id="txtComments" class="inputRequired"></textarea>
+                    </td>
+        </tr>
+        <tr>
+            <td>
+                <input id="btnSubmit" type="button" value="Submit" style="    width: 30%;
+                text-align: center;
+                background-color: #36acc7;
+                border: 1px solid #36acc7;
+                float: right;
+                padding: 10px;;
+                " />
+            </td>
+          
+
+        </tr>
+        <tr>
+                <td>   
+                         
+                        <div id="divResult"> <br> </div>
+                       
+                </td>
+        </tr>
+    </table>
+</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
