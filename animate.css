@@ -1,0 +1,315 @@
+
+body{
+    background-color: black;
+    text-align: center;
+    line-height: 1.6;
+    overflow-x: hidden;
+    margin-bottom: 50px;
+}
+.box{
+    width: 100px;
+    height: 100px;
+    background-color: blanchedalmond;
+    margin: 20px;
+    position: relative;
+    animation-name: myanimate;
+    animation-duration: 3s;
+    animation-iteration-count:infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    text-align: center;
+    justify-content: center;
+    padding-top: 30px;
+}
+.feed{
+    position: absolute;
+    right: 2%;
+    width: 20px;
+    height: 20px;
+    border-radius: 20%;
+    background-color: white;
+    top: 25%;
+    /* animation-name: feed;
+    animation-duration: 2s;
+    animation-delay: 1s;
+    animation-iteration-count:infinite;
+
+    transition-property: right;
+    transition-duration: 3s;
+    transition-duration: 1s; */
+}
+.feed2{
+position: absolute;
+    right: 20%;
+    width: 20px;
+    height: 20px;
+    border-radius: 20%;
+    background-color: white;
+    top: 25%;
+}
+.feed3{
+position: absolute;
+    right: 40%;
+    width: 20px;
+    height: 20px;
+    border-radius: 20%;
+    background-color: white;
+    top: 25%;
+}
+.feed4{
+position: absolute;
+    right: 60%;
+    width: 20px;
+    height: 20px;
+    border-radius: 20%;
+    background-color: white;
+    top: 25%;
+}
+.feed5{
+position: absolute;
+    right: 80%;
+    width: 20px;
+    height: 20px;
+    border-radius: 20%;
+    background-color: white;
+    top: 25%;
+}
+/*   @keyframes feed {
+   0%{
+    right: 0%;
+   }
+   
+   100%{
+       right: 95%;
+   }
+   
+} */
+.pacman{
+    margin: auto;
+    position: relative;
+    margin-left: 0%;
+    width: 100px;
+    height: 100px;
+    transition-property: margin-left;
+    transition-duration: .5s;
+    z-index: 1;
+    animation-name: pacman;
+    animation-duration: 5s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite; 
+}
+@keyframes pacman {
+   0%{
+       margin-left: 0%;
+       
+   }
+   100%{
+       margin-left: 100%;
+   }
+}
+.pacup{
+    width: 100px;
+    height: 60px;
+    position: absolute;
+    background-color: yellow;
+    border-radius: 50% 50% 0% 0%;
+    margin-bottom: 3px;
+    transform: rotate(0deg);
+    top: 0%;
+    left: 0%;
+    animation-name: pacup;
+    animation-duration: .5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+}
+.pacdown{
+    width: 100px;
+    height: 60px;
+    background-color: yellow;
+    border-radius: 0 0 50% 50%;
+    top: 50%;
+    position: absolute;
+    transform: rotate(0deg);
+    animation-name: pacdown;
+    animation-duration: .5s;
+    animation-iteration-count: infinite;
+
+}
+@keyframes pacdown{
+   0%{
+       transform: rotate(0deg);
+   }
+   50%{
+       transform: rotate(45deg);
+   }
+   100%{
+       transform: rotate(0deg);
+   }
+}
+@keyframes pacup{
+   0%{
+       transform: rotate(0deg);
+   }
+   50%{
+       transform: rotate(-45deg);
+   }
+   100%{
+       transform: rotate(0deg);
+   }
+}
+    .heading{
+        color: white;
+        text-align: center;
+        margin-top: 20px;
+        position: relative;
+        animation-name: heading;
+        animation-duration: 3s;
+        animation-fill-mode: forwards;
+    }
+    .content{
+        color: white;
+        text-align: center;
+        width: 960px;
+        padding: 0 30px;
+        margin: auto;
+        position: relative;
+        animation-name: content;
+        animation-duration: 3s;
+        animation-fill-mode: forwards;
+        margin-bottom: 200px;
+    }
+    .head{
+        height: 130px;
+    }
+    .btn{
+        color: white;
+        border: 1px solid grey;
+       
+        display: inline-block;
+        text-decoration: none;
+        animation-name: button;
+        animation-duration: 3s;
+        animation-delay: 1s;
+        animation-fill-mode: forwards;
+        opacity: 0;
+        transition-property: transform;
+        transition-duration: .7s;
+    }
+    .btn:hover{
+        transform: rotateX(180deg);
+        color: white;
+    }
+    @keyframes button{
+        0%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 1;
+        }
+    }
+    @keyframes heading{
+        0%{ 
+                top: -50%;
+        }
+        100%{
+            top: 50%
+        }
+    }
+    @keyframes content{
+        0%{ 
+                left:-1000%;
+        }
+        100%{
+            left: 0%;
+        }
+    }
+@keyframes myanimate {
+        0%{
+        
+            border-radius: 0 0 0 0;
+            background-color: white;
+        }
+        25%{
+        
+            border-radius: 50% 0 0 0;
+            background-color: yellow;
+        }
+        50%{
+        
+            border-radius: 50% 50% 0 0;
+            background-color: yellowgreen;
+        }
+        75%{
+        
+            border-radius: 50% 50% 50% 0;
+            background-color: gray;
+        }
+        100%{
+        
+            border-radius: 50% 50% 50% 50%;
+            background-color: blanchedalmond;
+        }
+    }
+
+    .todo-container{
+        background-color: white;
+        margin-top: 20px;
+        height: 200px;
+    }
+
+#button{
+    display: inline-block;
+    background-color:#fc999b;
+    color:#ffffff;
+    border-radius: 5px;
+    text-align:center;
+    margin-top:2px;
+    padding: 5px 15px;
+    }
+    form{
+        display: inline-block;
+    }
+
+    .centering{
+	
+        max-width:1300px;
+        height: auto;
+        margin: 100px auto;
+    }
+    
+    #countdown{
+        text-align:center;
+        color: white;
+        font-size: 60px;
+    }
+    
+    .countdown-box{
+        display: inline-block;
+    }
+    
+    .countdown-box p{
+        font-size: 85px;
+        line-height: 90px;
+        padding:5px;
+        font-weight: bold;
+        margin:0;
+        background: #007bff;
+        color: #fff;
+    }
+    
+    .countdown-box span{
+        display: block;
+        font-size: 16px;
+        line-height: 30px;
+        background: white;
+        padding:5px;
+        color: black;
+    }
+    .centering h1{
+        color: cornflowerblue;
+    }
+    .new{
+        display: none;
+    }
